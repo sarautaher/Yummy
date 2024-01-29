@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <section class=" justify-content-center align-items-center 
+    " id="loading" ><i class="fas fa-spinner text-white fa-2xl"></i></section>
+    <header class="home vh-100 ">
+        <div  class="optionBox  py-5    flex-column   justify-content-between bg-dark">
+        <div class="list_Home ">
+            <a href="#" class="d-block p-1 text-white fw-bold" id="Search"><b>Search</b></a>
+            <a href="#" class="icon p-1 text-white fw-bold" id="categories"><b> Categories</b></a>
+            <a href="#" class="icon d-block p-1 text-white fw-bold" id="Area"> <b>Area</b></a>
+            <a href="#" class="icon d-block p-1 text-white fw-bold" id="Ingredients"><b> Ingredients</b></a>
+            <a href="#" class="d-block p-1 text-white fw-bold" id="contact2"><b> Contact Us</b></a>
+        </div>
+       <div>
+            <i class="icon text-white  fa-brands  fa-facebook p-2  "></i>
+            <i class="icon  fa-brands fa-twitter  text-white "></i>
+            <i class="text-white fa-solid fa-globe "></i>
+            <p class="text-white">Copyright Â© 2019 All Rights
+                Reserved.</p>
+        </div>
+        </div>
+        <div class="home-info d-flex vh-100  flex-column   justify-content-between bg-white align-items-center position-fixed py-5">
+            <img src="img/logo.png"  width="50px">
+            <span id="ToggleBtn" class="text-muted"><i class="fa fa-list fa-2xl" ></i> </span>
+            <i class=" fa fa-close text-muted cursor-pointer d-none   fa-2xl" id="closebtn"></i>
+<div class="d-flex flex-column "> 
+    <i class="fa-solid fa-globe p-2 "></i>
+    <i class="fa-solid fa-share-nodes p-2  "></i>
+</div>
+        </div>
+        <div class="bg-dark container vh-100">
+            <div class="row bg-dark d-none  g-2 py-5" id="Search2">
+       
+            </div>
+        <div class="row bg-dark d-none  g-2 py-5" id="Categories">
+         
+        </div>
+        
+        <div class="row bg-dark d-none  g-2 py-5" id="Contacts">
+            <div class="col-md-6"> <input id="inputname" class="form-control mb-3" onkeyup="vaildation()"  type="text"placeholder="Enter your Name">
+            <div class="alert alert-danger d-none " id="nameMessage">enter only letter and spaces</div>
+            </div>
+            <div class="col-md-6"> <input id="inputEmail" class="form-control mb-3" onkeyup="vaildation()"  type="email"placeholder="Enter your Email">
+                <div class="alert alert-danger d-none " id="emailMessage">Enter Valid Email Address, (user@user.com)</div></div>
+            <div class="col-md-6"> <input id="inputPhone" class="form-control mb-3" onkeyup="vaildation()"  type="text"placeholder="Enter your Phone">
+                <div class="alert alert-danger d-none " id="PhoneMessage">Enter Valid Phone Number</div>
+            </div>
+            <div class="col-md-6"> <input id="inputAge" class="form-control mb-3" onkeyup="vaildation()"  type="text"placeholder="Enter your Age">
+                <div class="alert alert-danger d-none " id="ageMessage">Enter Valid Age</div>
+            </div>
+            <div class="col-md-6"> <input id="inputpassword" class="form-control mb-3" onkeyup="vaildation()"  type="password"placeholder="Enter your password">
+                <div class="alert alert-danger d-none " id="passwordMessage">Password must be at least one uppercase letter,one lowercase letter, one digit and one special character</div>
+            </div>
+            <div class="col-md-6"> <input id="inputrpassword" class="form-control mb-3" onkeyup="vaildation()"  type="password"placeholder="Enter your password">
+                <div class="alert alert-danger d-none " id="rpasswordMessage">Enter vaild repassword</div></div>
+          <div class="text-center">  <button class="btn btn-outline-danger text-white w-25 text-center"type="submit" disabled id="btn">Submit</button> </div>
+        </div>
+
+
+        </div>
+    </header>
+   
+    
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/style.js"></script>
+    </body>
+</html>

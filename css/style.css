@@ -1,0 +1,37 @@
+a{
+    text-decoration: none;
+
+}
+.optionBox ,.home-info {
+    display: flex;
+    height: 100vmin;
+    position: fixed;
+    z-index: 33333;
+
+}
+.info-home{
+    overflow: hidden;
+   
+}
+.info{
+    top:120%;
+    background-color: rgba(2, 2, 3, 0.5);
+    transition: top 1s;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+}
+.info b{
+    top:40%;
+    left: 30%;
+}
+.info p{
+    top:50%;
+    left: 10%;
+}
+.info-home:hover .info{
+    top:0%;
+    left: 0;
+
+}
