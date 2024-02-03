@@ -1,7 +1,7 @@
 let list_Home=$(".optionBox ").outerWidth();
  $(document).ready(function(){
     $('.optionBox').animate({left:`-${list_Home}`},10,function(){
-        $('#loading').fadeOut(1000 ,()=>{
+        $('#loading2').fadeOut(1000 ,()=>{
             $('body').css("overflow","auto")
            });
         $(window).scrollTop(0) ;
@@ -46,12 +46,13 @@ async function getCategories(){
     $("#Search2").addClass('d-none'); 
     $("#Contacts").addClass('d-none');  
     let request=await fetch(`https://www.themealdb.com/api/json/v1/1/categories.php`);
+    if(request.ok){
     let data=await request.json();
    
     let categories=data.categories;
-    
+    $('#loading').fadeOut(500 );
    displayCategories(categories);
-   $('#loading').fadeOut(500 );
+   }
 }
 
 function displayCategories(arr){
@@ -62,7 +63,7 @@ function displayCategories(arr){
         <div  onclick="getByCategories('${arr[i].strCategory}')" class=" p-5 info-home position-relative ">
          <img src="${arr[i].strCategoryThumb}" class="w-100" >
         <div class="info position-absolute text-center"><b class=" position-absolute  text-white pb-3"> ${arr[i].strCategory    }</b>
-        <p class="  text-white position-absolute" > ${arr[i].strCategoryDescription }</p>
+        <p class="  text-white position-absolute" > ${arr[i].strCategoryDescription.slice(0,100) }</p>
     </div>
     </div>
  </div>  `
@@ -77,13 +78,13 @@ async function getArea(){
     $("#Search2").addClass('d-none');
     $("#Contacts").addClass('d-none');   
     let request=await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?a=list`);
+    if(request.ok){
     let data=await request.json();
-   
     let categories=data.meals.slice(0, 24);
    
    displayArea(categories);
    $('#loading').fadeOut(500 )
-}
+}}
 
 
 function displayArea(arr){
@@ -108,11 +109,12 @@ async function getIngredients(){
     $("#Search2").addClass('d-none');
     $("#Contacts").addClass('d-none');  
     let request=await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?i=list`);
+    if(request.ok){
     let data=await request.json();
    
     let meals=data.meals.slice(0, 24);
    displayIngredients(meals);
-   $('#loading').fadeOut(500 )
+   $('#loading').fadeOut(500 )}
 }
 
 
@@ -137,9 +139,10 @@ async function getMealDetails(mealID){
     $('#loading').fadeIn(500);
     $("#Categories").removeClass('d-none');
     let respone = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`);
+    if(respone.ok){
     respone = await respone.json();
     displaygetMealDetails(  respone.meals[0]);
-    $('#loading').fadeOut(500 )
+    $('#loading').fadeOut(500 )}
 }
 function displaygetMealDetails(arr){
     let ingredients = ``
@@ -185,25 +188,30 @@ async function getByAree(area){
     $('#loading').fadeIn(500);
     $("#Categories").removeClass('d-none');
     let data= await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`)
+    if(data.ok){
     let result=await data.json();
     displayAllCategories(result.meals.slice(0, 20))
-    $('#loading').fadeOut(500 )
+    $('#loading').fadeOut(500 )}
 }
 async function getByingredients(ingredients){
     $('#loading').fadeIn(500);
     $("#Categories").removeClass('d-none');
-    let data=await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredients}`)
+    let data=await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredients}`);
+    if(data.ok){
     let result=await data.json();
     displayAllCategories(result.meals.slice(0, 20))
-    $('#loading').fadeOut(500 )
+    $('#loading').fadeOut(500 )}
 }
 async function getByCategories(Categories){
     $('#loading').fadeIn(500);
     $("#Categories").removeClass('d-none');
     let data=await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${Categories}`)
+    if(data.ok){
     let result=await data.json();
-    displayAllCategories(result.meals.slice(0, 20))
-    $('#loading').fadeOut(500 )
+  
+    displayAllCategories(result.meals.slice(0,20));
+    $('#loading').fadeOut(500 );
+}
 }
 getByCategories("Seafood");
 function  getseacrh(){ 
@@ -247,20 +255,25 @@ function getcontant(){
     })
 }
 async function seacrhMyName(name){
+    $('#loading').fadeIn(500 )
     $("#Categories").removeClass('d-none');
     let response= await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`);
+    if(response.ok){
      response=await response.json();
    
        displayAllCategories(response.meals) ;
-     $('#loading').fadeOut(500 )
+     $('#loading').fadeOut(500 )}
 }
 async function searchByFLetter(temp){
+    $('#loading').fadeIn(500 )
     $("#Categories").removeClass('d-none');
   
     let response= await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${temp}`);
+    if(response.ok){
      response=await response.json();
        displayAllCategories(response.meals) ;
-     $('#loading').fadeOut(500 )
+     $('#loading').fadeOut(500 )}
+
 }
 
 $('#Search').click(function(){
@@ -293,7 +306,7 @@ function emailValidation(){
     return(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.(com)$/.test(document.getElementById('inputEmail').value));
 }
 function PhoneValidation(){
-    return(/^[01 ]+[0125]+[0-9]{0}/.test(document.getElementById('inputPhone').value));
+    return(/^[01 ]+[0125]+[0-9]{9}/.test(document.getElementById('inputPhone').value));
 }
 function AgeValidation(){
     return(/^[0-9 ]/.test(document.getElementById('inputAge').value));
