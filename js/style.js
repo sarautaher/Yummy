@@ -7,7 +7,14 @@ let list_Home=$(".optionBox ").outerWidth();
         $(window).scrollTop(0) ;
         });
 })
-let categories=[];
+function closeve(){
+    $('.optionBox').animate({left:`-${list_Home}`},1000);
+    $('.home-info').animate({marginLeft:`0px`},1000)
+    $('#closebtn').addClass("d-none");
+    $('#ToggleBtn').removeClass('d-none');   
+}
+
+
 $('#ToggleBtn').click(function(){
     $('.optionBox').animate({left:`0px`},1000)
     $('.home-info  ').animate({marginLeft:`${list_Home}`},1000)
@@ -15,10 +22,7 @@ $('#ToggleBtn').click(function(){
     $('#ToggleBtn').addClass('d-none');
 })
 $('#closebtn').click(function(){
-    $('.optionBox').animate({left:`-${list_Home}`},1000);
-    $('.home-info').animate({marginLeft:`0px`},1000)
-    $('#closebtn').addClass("d-none");
-    $('#ToggleBtn').removeClass('d-none');
+    closeve();
 });
 let icon=document.querySelectorAll('.icon');
 
@@ -164,7 +168,7 @@ function displaygetMealDetails(arr){
     <img src="${arr.strMealThumb}" class="w-100">
     <h2 class="text-white">${arr.strMeal}</h2>
     </div>
-    <div  class="col-md-8 text-white p-3">
+    <div  class="col-md-7 text-white p-3">
     <h2 class="text-white"> Instructions</h2>
     <p class="text-white">${arr.strInstructions}</p>
     <h3>Area :${arr.strArea}</h3>
@@ -181,6 +185,8 @@ function displaygetMealDetails(arr){
                 <a target="_blank" href="${arr.strYoutube}" class="btn btn-danger">Youtube</a>
 
     </div>
+    <div  class="col-md-1 text-white p-3">
+    <i class=" fa fa-close text-muted cursor-pointer    fa-2xl" onclick="getByCategories('Seafood')"></i></div>
     `
     document.getElementById('Categories').innerHTML=    cartoona;
 }
@@ -277,18 +283,23 @@ async function searchByFLetter(temp){
 }
 
 $('#Search').click(function(){
+    closeve();
     getseacrh();  
 })
 $('#Area').click(function(){
+    closeve();
     getArea();  
 })
 $('#categories').click(function(){
+    closeve();
     getCategories()
 })
 $('#contact2').click(function(){
+    closeve();
     getcontant()
 })
 $('#Ingredients').click(function(){
+    closeve();
     getIngredients()
 })
 
